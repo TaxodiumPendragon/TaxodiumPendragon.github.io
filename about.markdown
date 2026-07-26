@@ -4,12 +4,21 @@ title: About
 permalink: /about/
 ---
 
-这里是 **TaxodiumPendragon** 的个人学术笔记站，主要记录计算机体系结构、空间数据流加速器（SDA）及相关编译器/编程抽象方向的论文阅读。
+这里是 **TaxodiumPendragon** 的个人学习笔记站。
 
-## 站点结构
+## 两大板块
 
-- 博客短文：`_posts/`
-- 论文笔记集合：`_papers/`（Jekyll Collections，输出到 `/papers/`）
-- 原始草稿目录：`paperlist/`（构建时排除，仅作本地草稿）
+| 板块 | 源目录 | 列表页 | 细分方式 |
+|------|--------|--------|----------|
+| 课程笔记 | `_courses/` | [/courses/]({{ "/courses/" | relative_url }}) | `course`（哪门课）+ `tags`（课内主题） |
+| 论文笔记 | `_papers/` | [/papers/]({{ "/papers/" | relative_url }}) | `venue` / `year` + `tags` |
 
-技术栈为 Jekyll + Minima，笔记页布局参考了 [al-folio](https://github.com/alshedivat/al-folio) / [Academic Pages](https://academicpages.github.io/) 一类学术站点的 publications 集合写法。
+课程显示名在 `_data/courses.yml` 登记。
+
+## 首页介绍
+
+首页文案写在仓库根目录的 [`index.markdown`]({{ "/" | relative_url }}) 里「关于本站」一节。
+
+## 构建说明
+
+只维护 Markdown；`bundle exec jekyll build` 会生成 `_site/` 下的 HTML。不要手写、也不要单独维护一份 HTML。

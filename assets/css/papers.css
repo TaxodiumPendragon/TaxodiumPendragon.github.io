@@ -155,3 +155,18 @@
 .home-papers h2 {
   margin-bottom: 0.75rem;
 }
+
+.site-intro {
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.site-intro h2 {
+  margin-top: 0;
+}
+
+.course-group-title {
+  margin: 1.75rem 0 0.75rem;
+  font-size: 1.25rem;
+}

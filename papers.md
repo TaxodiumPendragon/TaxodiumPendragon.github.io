@@ -5,8 +5,18 @@ permalink: /papers/
 ---
 
 <p class="papers-intro">
-  本站用 Jekyll <code>collections</code> 管理论文阅读笔记（目录 <code>_papers/</code>），按年份倒序排列。
+  论文笔记在 <code>_papers/</code>。板块用 Collection；会议 / 年份在 front matter，主题用 <code>tags</code>。
 </p>
+
+{% assign all_tags = site.papers | map: "tags" | join: "," | split: "," | uniq | sort %}
+{% if all_tags.size > 0 %}
+<p class="papers-intro">主题 tag：
+  {% for tag in all_tags %}
+    {% assign t = tag | strip %}
+    {% if t != "" %}<span class="paper-tag">{{ t }}</span>{% endif %}
+  {% endfor %}
+</p>
+{% endif %}
 
 <ul class="papers-list">
   {% assign papers = site.papers | sort: "year" | reverse %}

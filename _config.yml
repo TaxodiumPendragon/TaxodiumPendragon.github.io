@@ -1,7 +1,7 @@
 title: TaxodiumPendragon
 email: ""
 description: >-
-  计算机体系结构与数据流加速器相关的论文阅读笔记。
+  课程笔记与论文阅读笔记：体系结构、数据流加速器及相关方向。
 baseurl: ""
 url: "https://taxodiumpendragon.github.io"
 github_username: TaxodiumPendragon
@@ -13,28 +13,36 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# Minima header navigation
+# 导航：板块入口页
 header_pages:
+  - courses.md
   - papers.md
   - about.markdown
 
-# Academic-style paper notes via Jekyll Collections
-# Pattern inspired by al-folio / Academic Pages `_publications`
+# 两大板块用 Collections 区分；板块内再用 course / tags 细分
+# 参考 al-folio / Academic Pages 的 collection 写法
 collections:
   papers:
     output: true
     permalink: /papers/:name/
-    sort_by: year
-    # newest first when listing (we reverse in templates)
+  courses:
+    output: true
+    permalink: /courses/:name/
 
 defaults:
   - scope:
       path: ""
       type: "papers"
     values:
-      layout: paper
+      layout: note
+      section: papers
+  - scope:
+      path: ""
+      type: "courses"
+    values:
+      layout: note
+      section: courses
 
-# Markdown / math-friendly rendering
 markdown: kramdown
 kramdown:
   input: GFM
@@ -42,7 +50,6 @@ kramdown:
   syntax_highlighter: rouge
 
 exclude:
-  - paperlist/
   - Gemfile
   - Gemfile.lock
   - node_modules/
@@ -51,3 +58,4 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - scripts/

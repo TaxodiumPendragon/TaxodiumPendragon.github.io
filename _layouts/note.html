@@ -1,14 +1,28 @@
 ---
 layout: default
 ---
-<article class="post paper-note">
+{%- assign section = page.section | default: page.collection -%}
+{%- if section == "courses" -%}
+  {%- assign back_url = "/courses/" -%}
+  {%- assign back_label = "返回课程笔记" -%}
+{%- else -%}
+  {%- assign back_url = "/papers/" -%}
+  {%- assign back_label = "返回论文笔记" -%}
+{%- endif -%}
+<article class="post note-page">
   <header class="post-header paper-header">
     <p class="paper-meta">
+      {%- if page.course -%}
+        <span class="paper-venue">{{ page.course }}</span>
+      {%- endif -%}
       {%- if page.venue -%}
         <span class="paper-venue">{{ page.venue }}</span>
       {%- endif -%}
       {%- if page.year -%}
         <span class="paper-year">{{ page.year }}</span>
+      {%- endif -%}
+      {%- if page.week -%}
+        <span class="paper-year">Week {{ page.week }}</span>
       {%- endif -%}
       {%- if page.tags -%}
         {%- for tag in page.tags -%}
@@ -37,6 +51,6 @@ layout: default
   </div>
 
   <p class="paper-back">
-    <a href="{{ "/papers/" | relative_url }}">← 返回论文笔记列表</a>
+    <a href="{{ back_url | relative_url }}">← {{ back_label }}</a>
   </p>
 </article>

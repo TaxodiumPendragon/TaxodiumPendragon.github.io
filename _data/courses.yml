@@ -1,0 +1,10 @@
+# 课程目录（可选）：slug → 显示名 / 学期
+# 列表页会按这里的顺序分组；未登记的 course 字段会排在后面
+
+- slug: computer-architecture
+  name: 计算机体系结构
+  term: 示例
+
+- slug: compilers
+  name: 编译原理
+  term: 示例
