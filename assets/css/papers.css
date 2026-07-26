@@ -1,0 +1,157 @@
+/* Academic paper notes — collection styles */
+
+.paper-header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.paper-meta {
+  margin: 0 0 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.paper-venue,
+.paper-year,
+.paper-tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.paper-venue {
+  background: #1a365d;
+  color: #fff;
+}
+
+.paper-year {
+  background: #edf2f7;
+  color: #2d3748;
+}
+
+.paper-tag {
+  background: #e6fffa;
+  color: #234e52;
+}
+
+.paper-authors {
+  margin: 0.35rem 0 0.75rem;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.paper-links {
+  margin: 0.5rem 0 0.75rem;
+}
+
+.paper-link-btn {
+  display: inline-block;
+  margin: 0 0.35rem 0.35rem 0;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.82rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 3px;
+  text-decoration: none !important;
+  color: #2b6cb0 !important;
+  background: #fff;
+}
+
+.paper-link-btn:hover {
+  background: #ebf8ff;
+  border-color: #90cdf4;
+}
+
+.paper-summary {
+  margin: 0.75rem 0 0;
+  padding: 0.75rem 1rem;
+  background: #f7fafc;
+  border-left: 3px solid #2b6cb0;
+  color: #2d3748;
+  font-size: 0.95rem;
+}
+
+.paper-back {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e8e8e8;
+  font-size: 0.95rem;
+}
+
+.paper-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 0.75rem 0;
+}
+
+.paper-content table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* Papers index cards */
+.papers-intro {
+  margin-bottom: 1.5rem;
+  color: #4a5568;
+}
+
+.papers-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.paper-card {
+  margin: 0 0 1.25rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.paper-card:hover {
+  border-color: #90cdf4;
+  box-shadow: 0 2px 8px rgba(26, 54, 93, 0.08);
+}
+
+.paper-card-title {
+  margin: 0.35rem 0 0.4rem;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.paper-card-title a {
+  text-decoration: none;
+  color: #1a365d;
+}
+
+.paper-card-title a:hover {
+  color: #2b6cb0;
+}
+
+.paper-card-authors {
+  margin: 0 0 0.5rem;
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.paper-card-summary {
+  margin: 0;
+  color: #4a5568;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.home-papers {
+  margin-top: 2rem;
+}
+
+.home-papers h2 {
+  margin-bottom: 0.75rem;
+}

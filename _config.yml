@@ -1,0 +1,53 @@
+title: TaxodiumPendragon
+email: ""
+description: >-
+  计算机体系结构与数据流加速器相关的论文阅读笔记。
+baseurl: ""
+url: "https://taxodiumpendragon.github.io"
+github_username: TaxodiumPendragon
+lang: zh-CN
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Minima header navigation
+header_pages:
+  - papers.md
+  - about.markdown
+
+# Academic-style paper notes via Jekyll Collections
+# Pattern inspired by al-folio / Academic Pages `_publications`
+collections:
+  papers:
+    output: true
+    permalink: /papers/:name/
+    sort_by: year
+    # newest first when listing (we reverse in templates)
+
+defaults:
+  - scope:
+      path: ""
+      type: "papers"
+    values:
+      layout: paper
+
+# Markdown / math-friendly rendering
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+exclude:
+  - paperlist/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
