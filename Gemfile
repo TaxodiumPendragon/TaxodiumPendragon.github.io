@@ -8,9 +8,6 @@ gem "bigdecimal"
 gem "base64"
 gem "strscan"
 
-# Optional C extension for Liquid; skip if native build fails on CI/Windows
-gem "liquid-c", "~> 4.0", platforms: :ruby
-
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-seo-tag", "~> 2.8"
