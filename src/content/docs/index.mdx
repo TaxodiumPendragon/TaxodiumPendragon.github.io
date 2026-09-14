@@ -1,0 +1,32 @@
+---
+title: 学习、思考，留下轨迹。
+description: TaxodiumPendragon 的个人学习笔记站，记录课程学习、论文阅读与研究中的思考。
+template: splash
+prev: false
+next: false
+hero:
+  tagline: 这里是 TaxodiumPendragon 的数字笔记本。从编译原理到计算机体系结构，把零散的知识整理成可以重访的理解。
+  actions:
+    - text: 浏览课程笔记
+      link: /courses/
+      icon: right-arrow
+    - text: 阅读论文
+      link: /papers/
+      variant: minimal
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../components/NoteList.astro';
+
+## 正在整理的知识
+
+<CardGrid>
+  <LinkCard title="编译原理" description="词法与语法分析、期中复习、期末复习和历年题。" href="/courses/compilers/01-lexical-analysis/" />
+  <LinkCard title="软件工程" description="需求分析、面向对象建模、课程项目与软件测试。" href="/courses/software-engineering/01-introduction/" />
+  <LinkCard title="论文阅读" description="计算机体系结构、空间数据流架构与缓存模型。" href="/papers/" />
+  <LinkCard title="关于作者" description="认识这个笔记本背后的学习者。" href="/about/" />
+</CardGrid>
+
+## 最近的论文阅读
+
+<NoteList papers limit={3} />

@@ -1,144 +1,66 @@
-# TaxodiumPendragon.github.io
+# TaxodiumPendragon 的学习笔记
 
-个人学习笔记站：课程笔记 + 论文笔记，基于 Jekyll Collections。
+基于 **Astro + Starlight** 的个人课程笔记与论文阅读站。
 
-- 线上站点：https://taxodiumpendragon.github.io/
-- 论文列表：https://taxodiumpendragon.github.io/papers/
-- 课程列表：https://taxodiumpendragon.github.io/courses/
+线上地址：https://taxodiumpendragon.github.io/
 
----
+## 本地运行
 
-## 使用指南
-
-### 1. 内容怎么组织：板块 + tag
-
-站点用两层结构，避免「所有笔记堆在一个目录里用 tag 硬分」：
-
-| 层级 | 机制 | 作用 |
-|------|------|------|
-| **大板块** | Jekyll Collection | 导航上分开：课程笔记 / 论文笔记 |
-| **板块内分类** | YAML front matter | 课程用 `course` + `tags`；论文用 `venue` / `year` + `tags` |
-
-对应目录：
-
-| 板块 | 源目录（只写 Markdown） | 列表页 | 细分字段 |
-|------|-------------------------|--------|----------|
-| 课程笔记 | `_courses/` | `/courses/` | `course`（哪门课）、`week`、`tags`（课内主题） |
-| 论文笔记 | `_papers/` | `/papers/` | `venue`、`year`、`authors`、`tags`、`links` |
-
-课程显示名在 `_data/courses.yml` 里登记（`slug` → 中文名 / 学期）。列表页会按 `course` 分组展示。
-
-**不要**再维护一份 `paperlist/` 之类的平行草稿目录：正式内容只放在 `_papers/` / `_courses/`，避免重复。
-
-### 2. 首页站内介绍写在哪
-
-编辑仓库根目录的 **`index.markdown`**。
-
-文件里「关于本站」那一段（带 HTML 注释标记）就是首页介绍；下面两节会自动列出最近论文 / 课程笔记。改完后本地 `jekyll serve` 预览，推送 `main` 即上线。
-
-其他常用入口：
-
-| 你想改的 | 文件 |
-|----------|------|
-| 首页介绍与首页区块 | `index.markdown` |
-| 关于页 | `about.markdown` |
-| 顶栏导航 | `_config.yml` → `header_pages` |
-| 站点标题 / 描述 | `_config.yml` → `title` / `description` |
-| 笔记页样式 | `assets/css/papers.css` |
-| 笔记页布局 | `_layouts/note.html` |
-
-### 3. 新建一篇笔记
-
-**方式 A：脚手架脚本（推荐）**
+需要 Node.js 22.12+，推荐 Node.js 24（与 GitHub Actions 一致）。
 
 ```powershell
-# 论文
-python scripts/new_note.py paper --title "Paper Title" --venue ISCA --year 2025 --tag SDA --tag cache
-
-# 课程（--course 填 _data/courses.yml 里的 slug）
-python scripts/new_note.py course --title "第2讲：流水线" --course computer-architecture --week 2 --tag pipeline
+npm ci
+npm run dev
 ```
 
-脚本会在对应目录生成带 front matter 的 `.md`，再自己补正文即可。
-
-**方式 B：手写 Markdown**
-
-在 `_papers/` 或 `_courses/` 新建 `.md`，文件头加上 YAML，例如：
-
-```yaml
----
-title: "Cache Calculus"
-venue: CAL
-year: 2016
-authors: "Nathan Beckmann, Daniel Sanchez"
-summary: "一句话摘要，出现在列表卡片上。"
-tags: [cache, modeling]
-links:
-  - label: PDF
-    url: https://example.com/paper.pdf
----
-```
-
-课程笔记示例：
-
-```yaml
----
-title: "示例：缓存层次与命中率"
-course: computer-architecture
-week: 1
-tags: [cache, memory]
-summary: "列表页上显示的短摘要。"
----
-```
-
-### 4. Markdown 会变成 HTML 吗？要不要自己写转换脚本？
-
-**不用。** Jekyll 构建时会自动把集合里的 Markdown 转成 `_site/` 下的 HTML。
-
-| 工具 | 做什么 | 不做什么 |
-|------|--------|----------|
-| `bundle exec jekyll build` / `serve` | MD → HTML，套布局、生成列表页 | — |
-| `scripts/new_note.py` | 生成带 front matter 的空 MD | **不**生成 HTML |
-
-日常流程：改 `.md` → 本地 `jekyll serve` 看效果 → `git push` → GitHub Actions 构建并发布。不要手写、也不要单独维护一份 HTML。
-
-### 5. 本地预览
-
-本机 Ruby 若装在用户 PATH（例如 `D:\Ruby40-x64\bin`），Cursor 内置终端有时读不到。先刷新再启动：
+打开终端显示的本地地址。全文搜索需要生产构建，测试搜索时运行：
 
 ```powershell
-$env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')
-cd D:\Code\blog\TaxodiumPendragon.github.io
-bundle install
-bundle exec jekyll serve
+npm run check
+npm run build
+npm test
+npm run preview
 ```
 
-打开 <http://127.0.0.1:4000>。
+## 内容放在哪里
 
-依赖由 `Gemfile` / `Gemfile.lock` 锁定；换机器或 CI 报缺 gem 时再跑一次 `bundle install`。
+- `src/content/docs/courses/compilers/`：编译原理，6 篇正式笔记和 1 篇空草稿。
+- `src/content/docs/courses/software-engineering/`：软件工程，8 篇笔记。
+- `src/content/docs/courses/example-cache-hierarchy.md`：保留的体系结构示例。
+- `src/content/docs/papers/`：4 篇论文阅读；`index.mdx` 自动生成列表。
+- `src/content/docs/index.mdx`：首页。
+- `src/content/docs/about.mdx`：作者介绍。
+- `public/assets/courses/`：笔记图片；正文使用 `/assets/courses/...` 引用。
+- `public/avatar.png`：作者 GitHub 头像的本地副本，可直接替换。
 
-### 6. 部署到 GitHub Pages
+编译原理按词法分析、语法分析、期中复习、期中考点、期末复习、2019 年试题排列。软件工程按介绍、作业 1/2、后端架构、顺序图、软件测试、作业 3、期末复习排列。原本空白的期末清单设置了 `draft: true`，不参与生产构建和搜索；原始简短提纲仍保留。PlantUML 顺序图当前以源码展示。
 
-1. 提交并推送到 `main`
-2. `.github/workflows/pages.yml` 自动 `jekyll build` 并部署
-3. 仓库 Settings → Pages → Source 选 **GitHub Actions**（已配置则无需再改）
+## 新建笔记
 
-站点：https://taxodiumpendragon.github.io/
-
----
-
-## 目录速查
-
+```powershell
+python scripts/new_note.py course --course compilers --slug exercises --title "补充练习" --order 7
+python scripts/new_note.py paper --slug paper-name --title "Paper Title" --venue ISCA --year 2026 --tag architecture
 ```
-_config.yml          # 站点配置、collections、导航
-index.markdown       # 首页（含站内介绍）
-courses.md           # 课程笔记列表页
-papers.md            # 论文笔记列表页
-_courses/            # 课程笔记源文件
-_papers/             # 论文笔记源文件
-_data/courses.yml    # 课程 slug → 显示名
-_layouts/note.html   # 笔记详情布局
-assets/css/papers.css
-scripts/new_note.py  # 新建笔记脚手架
-.github/workflows/pages.yml
-```
+
+也可以手写 Markdown，文件头至少需要 `title`。课程笔记还需 `course`、`order`、`sidebar.order`；论文可设置 `venue`、`year`、`authors`、`tags` 和 `links`。`description` 用作摘要。
+
+课内目录依据 `sidebar.order` 排序，总览依据 `order` 排序，两者应使用相同数字。已迁移课程用显式 `prev` / `next` 保持课内连续阅读；插入新笔记时同时调整相邻页链接，或删除这两个字段使用 Starlight 的目录顺序。
+
+增加一门新课程时，在 `astro.config.mjs` 的 sidebar 增加自动目录分组，并在 `src/content/docs/courses/index.mdx` 增加对应的 `NoteList`。页面中的课程中文名在 `src/components/PageTitle.astro` 里登记。
+
+公式使用 `$...$` 或 `$$...$$`，构建时通过 KaTeX 渲染。正文保持普通 Markdown；需要组件的索引页使用 MDX。
+
+## 界面与部署
+
+- `astro.config.mjs`：站点名称、侧栏、语言和集成配置。
+- `src/styles/custom.css`：配色、阅读宽度、头像和排版。
+- `src/components/PageTitle.astro`：课程名称、论文作者与原文链接。
+- `.github/workflows/pages.yml`：推送 `main` 后执行安装、类型检查、构建、链接验证，再发布 `dist/` 到 GitHub Pages。
+
+仓库 Pages 的 Source 使用 **GitHub Actions**。构建不需要 Ruby，也不需要手写 HTML。
+
+## 迁移说明
+
+保留 `/courses/`、`/papers/`、`/about/`、原有论文与课程 URL；旧 Jekyll 欢迎文章跳转至首页，`/feed.xml` 提供课程和论文 RSS。图片引用已从 Liquid 转换为静态路径。
+
+原笔记备份目录未修改；博客内的副本不是自动同步文件。旧 Jekyll 内容和配置在迁移前另存了本地备份，Git 历史也保留原版。日常只维护 `src/content/docs/`。

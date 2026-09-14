@@ -1,4 +1,4 @@
-name: Deploy Jekyll site to Pages
+name: Deploy Astro site to Pages
 
 on:
   push:
@@ -21,25 +21,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          ruby-version: "3.3"
-          bundler-cache: true
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check content and types
+        run: npm run check
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+      - name: Build with Astro
+        run: npm run build
         env:
-          JEKYLL_ENV: production
+          ASTRO_TELEMETRY_DISABLED: "1"
+
+      - name: Verify generated pages
+        run: npm test
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist
 
   deploy:
     environment:

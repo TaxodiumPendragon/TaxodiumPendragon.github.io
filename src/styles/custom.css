@@ -1,0 +1,33 @@
+:root {
+  --sl-color-accent-low: #122f34;
+  --sl-color-accent: #278b85;
+  --sl-color-accent-high: #b4e3da;
+  --sl-font: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --sl-content-width: 52rem;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e4f3ee;
+  --sl-color-accent: #176c63;
+  --sl-color-accent-high: #17483e;
+}
+.sl-markdown-content { line-height: 1.85; }
+.hero h1 { font-size: clamp(2.5rem, 4vw, 3.5rem); text-wrap: balance; }
+.sl-markdown-content :is(h2, h3) { letter-spacing: -.025em; }
+.sl-markdown-content img { border-radius: .5rem; }
+.sl-markdown-content table { font-size: .92rem; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding-block: .5rem; }
+.note-meta, .note-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; font-size: .85rem; }
+.topic-tag { padding: .05rem .5rem; border: 1px solid var(--sl-color-gray-5); border-radius: 1rem; }
+.note-authors, .note-description { color: var(--sl-color-gray-2); margin-top: .8rem; }
+.note-authors { font-size: .9rem; }
+.author-profile { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-block: 1rem 2.5rem; }
+.author-profile .avatar { width: 160px; height: 160px; border-radius: 50%; flex-shrink: 0; border: 3px solid var(--sl-color-gray-5); }
+.author-profile p { margin-block: .6rem; }
+.eyebrow { color: var(--sl-color-text-accent); font-size: .8rem; font-weight: 600; letter-spacing: .12em; }
+.course-link-list { list-style: none; padding: 0; }
+.course-link-list li { padding: .75rem 0; border-bottom: 1px solid var(--sl-color-gray-5); }
+.course-link-list p { margin: .25rem 0 0; font-size: .9rem; color: var(--sl-color-gray-2); }
+@media (max-width: 40rem) {
+  .author-profile { flex-direction: column-reverse; align-items: flex-start; }
+  .author-profile .avatar { width: 112px; height: 112px; }
+}

@@ -1,0 +1,13 @@
+---
+import { getCollection } from 'astro:content';
+interface Props { course?: string; papers?: boolean; limit?: number }
+const { course, papers = false, limit } = Astro.props;
+const notes = (await getCollection('docs', ({ data, id }) => !data.draft && (papers ? id.startsWith('papers/') && !!data.venue : data.course === course)))
+  .sort((a, b) => papers ? (b.data.year ?? 0) - (a.data.year ?? 0) : (a.data.order ?? 999) - (b.data.order ?? 999));
+---
+<ul class="course-link-list">
+  {notes.slice(0, limit ?? notes.length).map(({ id, data }) => <li>
+    <a href={`/${id}/`}>{data.title}</a>
+    <p>{papers && `${data.venue} · ${data.year} — `}{data.description}</p>
+  </li>)}
+</ul>

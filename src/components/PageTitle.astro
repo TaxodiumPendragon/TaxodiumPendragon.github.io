@@ -1,0 +1,17 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+const { entry } = Astro.locals.starlightRoute;
+const { course, venue, year, authors, tags, links, description } = entry.data;
+const names: Record<string, string> = {
+  compilers: '编译原理', 'software-engineering': '软件工程', 'computer-architecture': '计算机体系结构',
+};
+---
+<Default><slot /></Default>
+{(course || venue) && <div class="note-meta">
+  {course && <a href={`/courses/#${course}`}>{names[course] || course}</a>}
+  {venue && <span>{venue}{year ? ` · ${year}` : ''}</span>}
+  {tags.map((tag) => <span class="topic-tag">{tag}</span>)}
+</div>}
+{authors && <p class="note-authors">{authors}</p>}
+{(course || venue) && description && <p class="note-description">{description}</p>}
+{links.length > 0 && <div class="note-links">{links.map((link) => <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label} ↗</a>)}</div>}
