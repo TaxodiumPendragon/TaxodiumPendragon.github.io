@@ -1,0 +1,34 @@
+---
+title: 数据结构与算法
+description: 从线性结构、树与图到排序、检索和高级数据结构，按用途整理课程笔记与题解。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+原始 DSA 笔记按文件夹的用途重新命名和分类。页面标题说明内容，URL 使用稳定的英文名称；每篇仍保留 `source_file`，可以追溯到备份中的原文件。
+
+<CardGrid>
+  <LinkCard title="复习与总结" description="课堂补充、期中错题与期末专题，共 6 篇。" href="#review" />
+  <LinkCard title="章节作业" description="复杂度、线性表、树、图与排序等，共 9 篇。" href="#homework" />
+  <LinkCard title="书面作业答案" description="原 DSA-HW 目录中的分章答案，共 10 篇。" href="#written-answers" />
+  <LinkCard title="OJ 题解" description="各章在线评测题目与算法实现，共 8 篇。" href="#oj" />
+</CardGrid>
+
+<h2 id="review">复习与总结</h2>
+
+<NoteList course="data-structures-and-algorithms" category="review" />
+
+<h2 id="homework">章节作业</h2>
+
+<NoteList course="data-structures-and-algorithms" category="homework" />
+
+<h2 id="written-answers">书面作业答案</h2>
+
+<NoteList course="data-structures-and-algorithms" category="written-answers" />
+
+<h2 id="oj">OJ 题解</h2>
+
+<NoteList course="data-structures-and-algorithms" category="oj" />

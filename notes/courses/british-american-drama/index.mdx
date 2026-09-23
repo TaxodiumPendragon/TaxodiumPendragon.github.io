@@ -1,0 +1,19 @@
+---
+title: 英美戏剧
+description: 课堂词汇、剧本片段与作品阅读记录。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+课堂词汇、剧本片段与作品阅读记录。
+
+<CardGrid>
+  <LinkCard title="课程笔记" description="4 篇" href="#notes" />
+</CardGrid>
+
+<h2 id="notes">课程笔记</h2>
+
+<NoteList course="british-american-drama" category="notes" />

@@ -1,0 +1,29 @@
+---
+title: 计算机系统导论
+description: 信息表示、汇编、体系结构、存储、链接、异常控制流与系统 I/O。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+信息表示、汇编、体系结构、存储、链接、异常控制流与系统 I/O。
+
+<CardGrid>
+  <LinkCard title="章节笔记" description="12 篇" href="#chapters" />
+  <LinkCard title="小班课" description="3 篇" href="#tutorials" />
+  <LinkCard title="课程作业" description="10 篇" href="#homework" />
+</CardGrid>
+
+<h2 id="chapters">章节笔记</h2>
+
+<NoteList course="introduction-to-computer-systems" category="chapters" />
+
+<h2 id="tutorials">小班课</h2>
+
+<NoteList course="introduction-to-computer-systems" category="tutorials" />
+
+<h2 id="homework">课程作业</h2>
+
+<NoteList course="introduction-to-computer-systems" category="homework" />

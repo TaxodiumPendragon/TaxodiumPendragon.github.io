@@ -27,7 +27,25 @@
 .course-link-list { list-style: none; padding: 0; }
 .course-link-list li { padding: .75rem 0; border-bottom: 1px solid var(--sl-color-gray-5); }
 .course-link-list p { margin: .25rem 0 0; font-size: .9rem; color: var(--sl-color-gray-2); }
+.home-author {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.4rem, 4vw, 3rem);
+  margin-block: 1rem 3.5rem;
+  padding-block: 2rem;
+  border-block: 1px solid var(--sl-color-gray-5);
+}
+.home-author img {
+  width: clamp(112px, 14vw, 148px);
+  height: clamp(112px, 14vw, 148px);
+  border-radius: 50%;
+  border: 3px solid var(--sl-color-gray-5);
+}
+.home-author h2 { margin: .2rem 0 .65rem; }
+.home-author p { margin-block: .45rem; max-width: 48rem; }
 @media (max-width: 40rem) {
   .author-profile { flex-direction: column-reverse; align-items: flex-start; }
   .author-profile .avatar { width: 112px; height: 112px; }
+  .home-author { grid-template-columns: 1fr; padding-block: 1.5rem; margin-bottom: 2.5rem; }
 }

@@ -13,6 +13,7 @@ def main():
     parser.add_argument('--title', required=True)
     parser.add_argument('--slug', required=True, help='Lowercase URL slug, e.g. lexical-analysis')
     parser.add_argument('--course')
+    parser.add_argument('--category', help='Optional course subfolder, e.g. chapters or homework')
     parser.add_argument('--order', type=int)
     parser.add_argument('--week', type=int, help='Compatibility alias for --order')
     parser.add_argument('--venue')
@@ -30,12 +31,18 @@ def main():
         order = args.order if args.order is not None else args.week
         if order is None:
             parser.error('course notes require --order')
-        folder = ROOT / 'src/content/docs/courses' / args.course
+        folder = ROOT / 'notes/courses' / args.course
+        if args.category:
+            if not re.fullmatch(r'[a-z0-9]+(?:-[a-z0-9]+)*', args.category):
+                parser.error('--category must be a lowercase URL slug')
+            folder /= args.category
         meta.update(course=args.course, order=order, sidebar={'order': order})
+        if args.category:
+            meta['category'] = args.category
     else:
         if not args.venue or args.year is None:
             parser.error('paper notes require --venue and --year')
-        folder = ROOT / 'src/content/docs/papers'
+        folder = ROOT / 'notes/papers'
         meta.update(venue=args.venue, year=args.year, sidebar={'order': 2030 - args.year})
         if args.authors:
             meta['authors'] = args.authors

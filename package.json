@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "sync": "node scripts/sync-content.mjs",
+    "dev": "npm run sync && astro dev",
+    "build": "npm run sync && astro build",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "npm run sync && astro check",
     "test": "node scripts/verify-build.mjs"
   },
   "engines": { "node": ">=22.12.0" },

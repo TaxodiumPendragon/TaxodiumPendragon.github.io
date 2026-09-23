@@ -1,0 +1,49 @@
+---
+title: 学习、思考，留下轨迹。
+description: TaxodiumPendragon 的个人学习笔记站，记录课程学习、论文阅读与研究中的思考。
+template: splash
+prev: false
+next: false
+hero:
+  tagline: 这里是 TaxodiumPendragon 的数字笔记本。从编译原理到计算机体系结构，把零散的知识整理成可以重访的理解。
+  actions:
+    - text: 浏览课程笔记
+      link: /courses/
+      icon: right-arrow
+    - text: 阅读论文
+      link: /papers/
+      variant: minimal
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../components/NoteList.astro';
+
+<section className="home-author" aria-labelledby="home-author-title">
+  <img src="/avatar.png" alt="TaxodiumPendragon 的头像" width="136" height="136" />
+  <div>
+    <p className="eyebrow">ABOUT THE AUTHOR</p>
+    <h2 id="home-author-title">TaxodiumPendragon</h2>
+    <p>你好，我在这里记录课程学习与论文阅读，关注计算机体系结构、数据流加速器及相关方向。笔记会随着阅读和实践持续补充，也希望这些整理能给路过这里的你一点帮助。</p>
+    <a href="https://github.com/TaxodiumPendragon" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 ↗</a>
+  </div>
+</section>
+
+## 正在整理的知识
+
+<CardGrid>
+  <LinkCard title="编译原理" description="词法与语法分析、期中复习、期末复习和历年题。" href="/courses/compilers/01-lexical-analysis/" />
+  <LinkCard title="软件工程" description="需求分析、面向对象建模、课程项目与软件测试。" href="/courses/software-engineering/01-introduction/" />
+  <LinkCard title="数据结构与算法" description="章节作业、书面答案、OJ 题解与考试复习。" href="/courses/data-structures-and-algorithms/" />
+  <LinkCard title="计算机网络" description="应用层、传输层、网络层、链路层与复习资料。" href="/courses/computer-networks/" />
+  <LinkCard title="离散数学" description="集合、图论、组合、代数、逻辑与自动机。" href="/courses/discrete-mathematics/" />
+  <LinkCard title="计算机组成原理" description="控制器、存储、中断、总线和输入输出。" href="/courses/computer-organization/" />
+  <LinkCard title="计算机系统导论" description="信息表示、汇编、存储、链接与系统编程。" href="/courses/introduction-to-computer-systems/" />
+  <LinkCard title="信息安全" description="课程作业和期末复习记录。" href="/courses/information-security/" />
+  <LinkCard title="音乐与数学" description="节奏、律学、和弦、对称与新黎曼理论。" href="/courses/music-and-mathematics/" />
+  <LinkCard title="英美戏剧" description="课堂词汇、剧本片段与作品阅读。" href="/courses/british-american-drama/" />
+  <LinkCard title="论文阅读" description="计算机体系结构、空间数据流架构与缓存模型。" href="/papers/" />
+</CardGrid>
+
+## 最近的论文阅读
+
+<NoteList papers limit={3} />

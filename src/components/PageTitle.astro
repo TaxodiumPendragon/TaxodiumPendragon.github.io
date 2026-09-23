@@ -3,7 +3,14 @@ import Default from '@astrojs/starlight/components/PageTitle.astro';
 const { entry } = Astro.locals.starlightRoute;
 const { course, venue, year, authors, tags, links, description } = entry.data;
 const names: Record<string, string> = {
-  compilers: '编译原理', 'software-engineering': '软件工程', 'computer-architecture': '计算机体系结构',
+  compilers: '编译原理', 'software-engineering': '软件工程',
+  'data-structures-and-algorithms': '数据结构与算法',
+  'computer-networks': '计算机网络', 'discrete-mathematics': '离散数学',
+  'computer-organization': '计算机组成原理',
+  'introduction-to-computer-systems': '计算机系统导论',
+  'information-security': '信息安全', 'music-and-mathematics': '音乐与数学',
+  'british-american-drama': '英美戏剧',
+  'computer-architecture': '计算机体系结构',
 };
 ---
 <Default><slot /></Default>

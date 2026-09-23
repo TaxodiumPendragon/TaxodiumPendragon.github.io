@@ -1,5 +1,5 @@
 {
   "extends": "astro/tsconfigs/strict",
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist", "legacy-jekyll", "_site", "vendor"]
+  "exclude": ["dist", "node_modules"]
 }

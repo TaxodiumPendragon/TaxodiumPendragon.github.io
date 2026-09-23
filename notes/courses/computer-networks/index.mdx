@@ -1,0 +1,24 @@
+---
+title: 计算机网络
+description: 从应用层到链路层的课程笔记与期末复习。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+从应用层到链路层的课程笔记与期末复习。
+
+<CardGrid>
+  <LinkCard title="章节笔记" description="5 篇" href="#chapters" />
+  <LinkCard title="复习与总结" description="2 篇" href="#review" />
+</CardGrid>
+
+<h2 id="chapters">章节笔记</h2>
+
+<NoteList course="computer-networks" category="chapters" />
+
+<h2 id="review">复习与总结</h2>
+
+<NoteList course="computer-networks" category="review" />

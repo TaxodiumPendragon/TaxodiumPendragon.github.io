@@ -1,0 +1,24 @@
+---
+title: 离散数学
+description: 集合、关系、图论、代数系统、逻辑与自动机。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+集合、关系、图论、代数系统、逻辑与自动机。
+
+<CardGrid>
+  <LinkCard title="章节笔记" description="22 篇" href="#chapters" />
+  <LinkCard title="考试与复习" description="4 篇" href="#review" />
+</CardGrid>
+
+<h2 id="chapters">章节笔记</h2>
+
+<NoteList course="discrete-mathematics" category="chapters" />
+
+<h2 id="review">考试与复习</h2>
+
+<NoteList course="discrete-mathematics" category="review" />

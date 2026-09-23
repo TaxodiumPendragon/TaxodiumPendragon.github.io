@@ -1,0 +1,32 @@
+---
+title: 2025 课堂补充：栈与队列
+description: 栈与队列相关的课堂补充记录。
+course: data-structures-and-algorithms
+category: review
+order: 1
+source_file: note25.md
+tags:
+  - stack
+  - queue
+sidebar:
+  order: 1
+prev: false
+next:
+  link: /courses/data-structures-and-algorithms/review/02-midterm-notes/
+  label: 期中复习与错题整理
+---
+## 3.栈与队列
+
+- 链式栈只能在链表头部进行操作，故链表没有必要像单链表那样附加头结点。
+
+
+中缀转后缀关键逻辑
+```cpp
+While (以下循环)
+If（栈非空 and 栈顶不是左括号 and 输入运算符的优先级 “≤”栈顶运算符的优先级）时
+将当前栈顶元素弹栈，放到后缀表达式序列中（此步反复循环，直到上述if条件不成立）; 将输入的运算符压入栈中。
+Else  把输入的运算符压栈（>当前栈顶运算符才压栈！）
+```
+
+
+

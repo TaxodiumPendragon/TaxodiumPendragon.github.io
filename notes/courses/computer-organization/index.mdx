@@ -1,0 +1,24 @@
+---
+title: 计算机组成原理
+description: 控制器、存储层次、中断、总线与输入输出。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+控制器、存储层次、中断、总线与输入输出。
+
+<CardGrid>
+  <LinkCard title="课堂笔记" description="6 篇" href="#lectures" />
+  <LinkCard title="复习与总结" description="3 篇" href="#review" />
+</CardGrid>
+
+<h2 id="lectures">课堂笔记</h2>
+
+<NoteList course="computer-organization" category="lectures" />
+
+<h2 id="review">复习与总结</h2>
+
+<NoteList course="computer-organization" category="review" />

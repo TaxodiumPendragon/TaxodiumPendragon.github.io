@@ -9,6 +9,7 @@ export const collections = {
     loader: docsLoader(),
     schema: docsSchema({ extend: z.object({
       course: z.string().optional(),
+      category: z.string().optional(),
       order: z.number().optional(),
       venue: z.string().optional(),
       year: z.number().optional(),

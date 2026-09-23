@@ -1,0 +1,24 @@
+---
+title: 信息安全
+description: 课程作业与期末复习笔记。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+课程作业与期末复习笔记。
+
+<CardGrid>
+  <LinkCard title="课程作业" description="2 篇" href="#homework" />
+  <LinkCard title="复习与总结" description="1 篇" href="#review" />
+</CardGrid>
+
+<h2 id="homework">课程作业</h2>
+
+<NoteList course="information-security" category="homework" />
+
+<h2 id="review">复习与总结</h2>
+
+<NoteList course="information-security" category="review" />

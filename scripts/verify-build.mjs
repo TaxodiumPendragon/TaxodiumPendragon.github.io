@@ -4,7 +4,7 @@ import path from 'node:path';
 import { parse } from 'yaml';
 
 const dist = path.resolve('dist');
-const docs = path.resolve('src/content/docs');
+const docs = path.resolve('notes');
 const read = (file) => fs.readFileSync(file, 'utf8');
 const files = fs.readdirSync(dist, { recursive: true }).filter((f) => f.endsWith('.html'));
 const notes = fs.readdirSync(docs, { recursive: true }).filter((f) => /\.mdx?$/.test(f));
@@ -34,7 +34,7 @@ for (const file of files) {
     assert(fs.existsSync(target), `Broken local link in ${file}: ${match[1]}`);
   }
 }
-assert(published >= 19, 'Migrated course or paper notes are missing');
+assert(published >= 130, 'Migrated course or paper notes are missing');
 assert(read(path.join(dist, 'courses/compilers/02-syntax-analysis/index.html')).includes('katex'), 'Math was not rendered');
 assert(read(path.join(dist, 'about/index.html')).includes('src="/avatar.png"'), 'Missing author avatar');
 assert(fs.existsSync(path.join(dist, 'avatar.png')), 'Missing avatar asset');

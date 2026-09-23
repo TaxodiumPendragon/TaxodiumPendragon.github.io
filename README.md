@@ -4,63 +4,111 @@
 
 线上地址：https://taxodiumpendragon.github.io/
 
-## 本地运行
+## 最常用的更新流程
 
-需要 Node.js 22.12+，推荐 Node.js 24（与 GitHub Actions 一致）。
+所有可编辑的 Markdown/MDX 都放在仓库根目录的 **`notes/`**，它和本 README 同级。日常不需要修改 `src/content/docs/`；那个目录由同步脚本临时生成，并已加入 `.gitignore`。
+
+第一次使用先安装依赖（Node.js 22.12+，推荐 Node.js 24）：
 
 ```powershell
 npm ci
-npm run dev
 ```
 
-打开终端显示的本地地址。全文搜索需要生产构建，测试搜索时运行：
+之后每次更新：
+
+1. 在 `notes/` 中新增或修改 `.md` / `.mdx`。
+2. 运行 `npm run sync`，把内容同步到网站构建目录。
+3. 运行 `npm run dev`，打开终端显示的本地地址预览。
+4. 确认后提交并推送 `main`，GitHub Actions 会自动发布。
+
+也可以直接运行：
+
+```powershell
+npm run build
+```
+
+`build`、`dev` 和 `check` 都会先自动执行同步，因此通常不必单独运行 `npm run sync`。生产检查命令为：
 
 ```powershell
 npm run check
 npm run build
 npm test
-npm run preview
 ```
 
-## 内容放在哪里
+## 内容目录
 
-- `src/content/docs/courses/compilers/`：编译原理，6 篇正式笔记和 1 篇空草稿。
-- `src/content/docs/courses/software-engineering/`：软件工程，8 篇笔记。
-- `src/content/docs/courses/example-cache-hierarchy.md`：保留的体系结构示例。
-- `src/content/docs/papers/`：4 篇论文阅读；`index.mdx` 自动生成列表。
-- `src/content/docs/index.mdx`：首页。
-- `src/content/docs/about.mdx`：作者介绍。
-- `public/assets/courses/`：笔记图片；正文使用 `/assets/courses/...` 引用。
-- `public/avatar.png`：作者 GitHub 头像的本地副本，可直接替换。
+```text
+notes/
+├─ index.mdx                         # 首页与作者简介
+├─ about.mdx                         # 旧 /about/ 地址兼容页（不显示在导航）
+├─ courses/
+│  ├─ index.mdx                     # 课程总览
+│  ├─ compilers/                    # 编译原理
+│  ├─ software-engineering/         # 软件工程
+│  ├─ data-structures-and-algorithms/ # 数据结构与算法
+│  ├─ computer-networks/            # 计算机网络
+│  ├─ discrete-mathematics/         # 离散数学
+│  ├─ computer-organization/        # 计算机组成原理
+│  ├─ introduction-to-computer-systems/ # 计算机系统导论
+│  ├─ information-security/         # 信息安全
+│  ├─ music-and-mathematics/        # 音乐与数学
+│  └─ british-american-drama/       # 英美戏剧
+└─ papers/                           # 论文阅读
+```
 
-编译原理按词法分析、语法分析、期中复习、期中考点、期末复习、2019 年试题排列。软件工程按介绍、作业 1/2、后端架构、顺序图、软件测试、作业 3、期末复习排列。原本空白的期末清单设置了 `draft: true`，不参与生产构建和搜索；原始简短提纲仍保留。PlantUML 顺序图当前以源码展示。
+课程内部继续按用途分目录。例如数据结构与算法分为 `review`、`homework`、`written-answers` 和 `oj`；计算机系统导论分为 `chapters`、`tutorials` 和 `homework`。网站侧边栏使用相同分类，并默认折叠。
+
+图片等静态资源放在 `public/assets/courses/课程名/`。Markdown 中使用从网站根目录开始的路径，例如：
+
+```markdown
+![TCP 可靠性](/assets/courses/computer-networks/img03/TCP可靠性.png)
+```
 
 ## 新建笔记
 
+课程笔记可以复制同一课程中的现有文件，至少保留以下 frontmatter：
+
+```yaml
+---
+title: 页面标题
+description: 列表中显示的简短摘要
+course: computer-networks
+category: chapters
+order: 6
+sidebar:
+  order: 6
+---
+```
+
+`course` 与 `category` 决定课程和分组，`order` 决定课程总览中的顺序，`sidebar.order` 决定左侧目录顺序。`draft: true` 的文件不会发布或进入搜索。
+
+原有脚手架仍可创建基础文件：
+
 ```powershell
-python scripts/new_note.py course --course compilers --slug exercises --title "补充练习" --order 7
+python scripts/new_note.py course --course computer-networks --category chapters --slug routing --title "路由算法" --order 6
 python scripts/new_note.py paper --slug paper-name --title "Paper Title" --venue ISCA --year 2026 --tag architecture
 ```
 
-也可以手写 Markdown，文件头至少需要 `title`。课程笔记还需 `course`、`order`、`sidebar.order`；论文可设置 `venue`、`year`、`authors`、`tags` 和 `links`。`description` 用作摘要。
+脚手架会把新文件直接写入 `notes/` 的对应课程目录。公式使用 `$...$` 或 `$$...$$`，构建时通过 KaTeX 渲染。
 
-课内目录依据 `sidebar.order` 排序，总览依据 `order` 排序，两者应使用相同数字。已迁移课程用显式 `prev` / `next` 保持课内连续阅读；插入新笔记时同时调整相邻页链接，或删除这两个字段使用 Starlight 的目录顺序。
+## 新课程如何加入网站
 
-增加一门新课程时，在 `astro.config.mjs` 的 sidebar 增加自动目录分组，并在 `src/content/docs/courses/index.mdx` 增加对应的 `NoteList`。页面中的课程中文名在 `src/components/PageTitle.astro` 里登记。
+1. 在 `notes/courses/<course-slug>/` 建立课程首页 `index.mdx` 和分类子目录。
+2. 给笔记设置一致的 `course` 与 `category`。
+3. 在 `astro.config.mjs` 的 `sidebar` 中登记课程及分类。
+4. 在 `notes/courses/index.mdx` 添加课程入口；需要显示在首页时，同时编辑 `notes/index.mdx`。
+5. 运行 `npm run build` 和 `npm test`。
 
-公式使用 `$...$` 或 `$$...$$`，构建时通过 KaTeX 渲染。正文保持普通 Markdown；需要组件的索引页使用 MDX。
+本次从 `D:\Code\blog\draft` 导入了其中有 Markdown 的课程。原始 `draft` 没有修改：计算机网络 7 篇、离散数学 26 篇、计算机组成原理 9 篇、信息安全 3 篇、音乐与数学 7 篇、英美戏剧 4 篇、计算机系统导论 25 篇。`信概统` 目录只有 PDF，因此没有生成博客文章。两篇空的组成原理笔记和一篇空的 ICS 提纲以草稿保存。
 
-## 界面与部署
+## 站点结构与部署
 
-- `astro.config.mjs`：站点名称、侧栏、语言和集成配置。
-- `src/styles/custom.css`：配色、阅读宽度、头像和排版。
-- `src/components/PageTitle.astro`：课程名称、论文作者与原文链接。
-- `.github/workflows/pages.yml`：推送 `main` 后执行安装、类型检查、构建、链接验证，再发布 `dist/` 到 GitHub Pages。
+- `notes/`：唯一需要日常编辑的 Markdown/MDX 内容源。
+- `scripts/sync-content.mjs`：校验 frontmatter 并同步到 Astro 内容目录。
+- `src/components/`：课程列表、笔记标题元信息等界面组件。
+- `src/styles/custom.css`：主题配色、首页作者区和文章排版。
+- `astro.config.mjs`：站点信息、右侧文章目录与折叠侧边栏。
+- `public/`：头像、图标和笔记图片。
+- `.github/workflows/pages.yml`：安装、检查、构建、验证并部署 GitHub Pages。
 
-仓库 Pages 的 Source 使用 **GitHub Actions**。构建不需要 Ruby，也不需要手写 HTML。
-
-## 迁移说明
-
-保留 `/courses/`、`/papers/`、`/about/`、原有论文与课程 URL；旧 Jekyll 欢迎文章跳转至首页，`/feed.xml` 提供课程和论文 RSS。图片引用已从 Liquid 转换为静态路径。
-
-原笔记备份目录未修改；博客内的副本不是自动同步文件。旧 Jekyll 内容和配置在迁移前另存了本地备份，Git 历史也保留原版。日常只维护 `src/content/docs/`。
+仓库已经完全使用 Astro 部署，不再依赖 Ruby 或 Jekyll。旧 Jekyll 源文件、构建缓存和兼容跳转已从仓库中移除；历史版本仍可从 Git 记录恢复。
