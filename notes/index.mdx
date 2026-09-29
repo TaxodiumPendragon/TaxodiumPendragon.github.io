@@ -19,12 +19,11 @@ import { CardGrid, LinkCard } from '@astrojs/starlight/components';
 import NoteList from '../../components/NoteList.astro';
 
 <section className="home-author" aria-labelledby="home-author-title">
-  <img src="/avatar.png" alt="TaxodiumPendragon 的头像" width="136" height="136" />
+  <img src="/avatar-transparent.png" alt="TaxodiumPendragon 的头像" width="176" height="176" />
   <div>
     <p className="eyebrow">ABOUT THE AUTHOR</p>
     <h2 id="home-author-title">TaxodiumPendragon</h2>
-    <p>你好，我在这里记录课程学习与论文阅读，关注计算机体系结构、数据流加速器及相关方向。笔记会随着阅读和实践持续补充，也希望这些整理能给路过这里的你一点帮助。</p>
-    <a href="https://github.com/TaxodiumPendragon" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 ↗</a>
+    <p>你好，我在这里记录课程学习与论文阅读，关注计算机体系结构、数据流加速器及相关方向。笔记会随着阅读和实践持续补充，也希望这些整理能给路过这里的你一点帮助。<a className="author-link" href="https://github.com/TaxodiumPendragon" target="_blank" rel="noopener noreferrer">在 GitHub 找到我 ↗</a></p>
   </div>
 </section>
 
@@ -41,7 +40,17 @@ import NoteList from '../../components/NoteList.astro';
   <LinkCard title="信息安全" description="课程作业和期末复习记录。" href="/courses/information-security/" />
   <LinkCard title="音乐与数学" description="节奏、律学、和弦、对称与新黎曼理论。" href="/courses/music-and-mathematics/" />
   <LinkCard title="英美戏剧" description="课堂词汇、剧本片段与作品阅读。" href="/courses/british-american-drama/" />
+  <LinkCard title="自然语言处理" description="NLP 基础、现代汉语词法、句法与语义分析。" href="/courses/natural-language-processing/" />
+  <LinkCard title="并行与分布式计算" description="GPU、CUDA、算子优化和分布式训练。" href="/courses/parallel-distributed-computing/" />
   <LinkCard title="论文阅读" description="计算机体系结构、空间数据流架构与缓存模型。" href="/papers/" />
+</CardGrid>
+
+## 课程之外
+
+<CardGrid>
+  <LinkCard title="杂谈" description="不属于课程与论文的零散想法。" href="/essays/" />
+  <LinkCard title="项目" description="做过的工具、网站和实验记录。" href="/projects/" />
+  <LinkCard title="兴趣爱好 ↗" description="前往独立设计的兴趣页面。" href="/interests/" />
 </CardGrid>
 
 ## 最近的论文阅读

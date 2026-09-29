@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="TaxodiumPendragon 的兴趣空间。" />
+    <title>兴趣空间 · TaxodiumPendragon</title>
+    <style>
+      :root { color-scheme: light; --ink: #18231f; --paper: #f4efe5; --accent: #d76845; --green: #1d6f64; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; color: var(--ink); background: var(--paper); font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .38; background-image: radial-gradient(#1d6f6422 1px, transparent 1px); background-size: 18px 18px; }
+      main { position: relative; width: min(860px, calc(100% - 2rem)); min-height: 100vh; margin: auto; display: grid; align-content: center; padding: 4rem 0; }
+      .kicker { color: var(--green); font-size: .78rem; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+      h1 { max-width: 9ch; margin: .8rem 0 1.5rem; font-family: Georgia, "Noto Serif SC", serif; font-size: clamp(3.8rem, 12vw, 8rem); font-weight: 500; line-height: .92; letter-spacing: -.06em; }
+      .intro { max-width: 36rem; font-size: clamp(1.05rem, 2vw, 1.3rem); line-height: 1.9; }
+      .rule { width: min(16rem, 60vw); height: 5px; margin: 2rem 0; background: var(--accent); transform: rotate(-1deg); }
+      nav { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1rem; }
+      a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .28em; }
+      .button { padding: .8rem 1.1rem; border: 1px solid currentColor; border-radius: 999px; text-decoration: none; transition: .18s ease; }
+      .button:hover { color: var(--paper); background: var(--green); border-color: var(--green); transform: translateY(-2px); }
+      .stamp { position: absolute; right: 0; bottom: 3rem; color: var(--accent); font: 700 .75rem/1 monospace; letter-spacing: .1em; transform: rotate(-5deg); }
+      @media (max-width: 38rem) { .stamp { position: static; margin-top: 4rem; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="kicker">Outside the syllabus</p>
+      <h1>兴趣空间</h1>
+      <div class="rule"></div>
+      <p class="intro">这里留给课程、论文和项目之外的好奇心。页面会用自己的节奏慢慢生长，主博客只保留通往这里的入口。</p>
+      <nav aria-label="页面链接">
+        <a class="button" href="/">返回笔记站</a>
+        <a class="button" href="https://github.com/TaxodiumPendragon">GitHub ↗</a>
+      </nav>
+      <p class="stamp">TAXODIUM · SIDE B</p>
+    </main>
+  </body>
+</html>

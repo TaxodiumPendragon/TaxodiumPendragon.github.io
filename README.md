@@ -50,10 +50,14 @@ notes/
 │  ├─ discrete-mathematics/         # 离散数学
 │  ├─ computer-organization/        # 计算机组成原理
 │  ├─ introduction-to-computer-systems/ # 计算机系统导论
-│  ├─ information-security/         # 信息安全
-│  ├─ music-and-mathematics/        # 音乐与数学
-│  └─ british-american-drama/       # 英美戏剧
-└─ papers/                           # 论文阅读
+│  ├─ information-security/          # 信息安全
+│  ├─ music-and-mathematics/         # 音乐与数学
+│  ├─ british-american-drama/        # 英美戏剧
+│  ├─ natural-language-processing/   # 自然语言处理
+│  └─ parallel-distributed-computing/ # 并行与分布式计算
+├─ papers/                           # 论文阅读
+├─ essays/                           # 杂谈
+└─ projects/                         # 项目
 ```
 
 课程内部继续按用途分目录。例如数据结构与算法分为 `review`、`homework`、`written-answers` 和 `oj`；计算机系统导论分为 `chapters`、`tutorials` 和 `homework`。网站侧边栏使用相同分类，并默认折叠。
@@ -99,7 +103,7 @@ python scripts/new_note.py paper --slug paper-name --title "Paper Title" --venue
 4. 在 `notes/courses/index.mdx` 添加课程入口；需要显示在首页时，同时编辑 `notes/index.mdx`。
 5. 运行 `npm run build` 和 `npm test`。
 
-本次从 `D:\Code\blog\draft` 导入了其中有 Markdown 的课程。原始 `draft` 没有修改：计算机网络 7 篇、离散数学 26 篇、计算机组成原理 9 篇、信息安全 3 篇、音乐与数学 7 篇、英美戏剧 4 篇、计算机系统导论 25 篇。`信概统` 目录只有 PDF，因此没有生成博客文章。两篇空的组成原理笔记和一篇空的 ICS 提纲以草稿保存。
+课程内容曾从 `D:\Code\blog\draft` 导入：计算机网络、离散数学、计算机组成原理、信息安全、音乐与数学、英美戏剧、计算机系统导论、数据结构与算法、自然语言处理，以及并行与分布式计算。空白提纲以 `draft: true` 保存，不参与构建。`信概统` 目录只有 PDF，目前仍保留为本地资料，没有生成博客文章。
 
 ## 站点结构与部署
 
@@ -109,6 +113,7 @@ python scripts/new_note.py paper --slug paper-name --title "Paper Title" --venue
 - `src/styles/custom.css`：主题配色、首页作者区和文章排版。
 - `astro.config.mjs`：站点信息、右侧文章目录与折叠侧边栏。
 - `public/`：头像、图标和笔记图片。
+- `public/interests/index.html`：与主站视觉不同的独立兴趣页面，主站只保留入口。
 - `.github/workflows/pages.yml`：安装、检查、构建、验证并部署 GitHub Pages。
 
 仓库已经完全使用 Astro 部署，不再依赖 Ruby 或 Jekyll。旧 Jekyll 源文件、构建缓存和兼容跳转已从仓库中移除；历史版本仍可从 Git 记录恢复。

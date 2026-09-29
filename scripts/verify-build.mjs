@@ -34,10 +34,11 @@ for (const file of files) {
     assert(fs.existsSync(target), `Broken local link in ${file}: ${match[1]}`);
   }
 }
-assert(published >= 130, 'Migrated course or paper notes are missing');
+assert(published >= 147, 'Migrated course or paper notes are missing');
 assert(read(path.join(dist, 'courses/compilers/02-syntax-analysis/index.html')).includes('katex'), 'Math was not rendered');
-assert(read(path.join(dist, 'about/index.html')).includes('src="/avatar.png"'), 'Missing author avatar');
-assert(fs.existsSync(path.join(dist, 'avatar.png')), 'Missing avatar asset');
+assert(read(path.join(dist, 'about/index.html')).includes('src="/avatar-transparent.png"'), 'Missing transparent author avatar');
+assert(fs.existsSync(path.join(dist, 'avatar-transparent.png')), 'Missing transparent avatar asset');
+assert(fs.existsSync(path.join(dist, 'interests/index.html')), 'Missing standalone interests page');
 assert(fs.existsSync(path.join(dist, 'pagefind/pagefind.js')), 'Missing search index');
 assert(fs.existsSync(path.join(dist, 'feed.xml')), 'Missing existing feed URL');
 console.log(`Verified ${files.length} HTML pages: ${published} notes, draft exclusion, local links, images, navigation, math, avatar and search index.`);

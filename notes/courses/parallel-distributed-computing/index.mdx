@@ -1,0 +1,24 @@
+---
+title: 并行与分布式计算
+description: GPU、CUDA、AI 算子优化与分布式训练课程笔记。
+prev: false
+next: false
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import NoteList from '../../../../components/NoteList.astro';
+
+从 AI 计算需求和异构硬件出发，整理 CUDA 编程、注意力机制、算子融合、分布式训练和集合通信。
+
+<CardGrid>
+  <LinkCard title="章节笔记" description="6 篇已发布，2 篇草稿" href="#chapters" />
+  <LinkCard title="课程作业" description="5 篇" href="#homework" />
+</CardGrid>
+
+<h2 id="chapters">章节笔记</h2>
+
+<NoteList course="parallel-distributed-computing" category="chapters" />
+
+<h2 id="homework">课程作业</h2>
+
+<NoteList course="parallel-distributed-computing" category="homework" />
