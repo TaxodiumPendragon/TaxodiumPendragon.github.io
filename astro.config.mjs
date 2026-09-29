@@ -74,7 +74,6 @@ export default defineConfig({
             { label: '章节笔记', collapsed: true, items: [{ autogenerate: { directory: 'courses/parallel-distributed-computing/chapters' } }] },
             { label: '课程作业', collapsed: true, items: [{ autogenerate: { directory: 'courses/parallel-distributed-computing/homework' } }] },
           ] },
-          { label: '计算机体系结构', collapsed: true, items: [{ label: '缓存层次与命中率（示例）', link: '/courses/example-cache-hierarchy/' }] },
         ] },
         { label: '论文阅读', collapsed: true, items: [{ autogenerate: { directory: 'papers' } }] },
         { label: '杂谈', link: '/essays/' },
