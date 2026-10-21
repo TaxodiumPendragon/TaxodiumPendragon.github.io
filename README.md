@@ -107,6 +107,10 @@ python scripts/new_note.py paper --slug paper-name --title "Paper Title" --venue
 
 ## 站点结构与部署
 
+2026 秋课程位于 `notes/courses/operating-systems-honors/`、`set-and-graph-theory/` 和 `computer-architecture-lab/`。每门课程以 `00-review-outline` 作为第一篇内容：基本信息与成绩构成在前，按课件顺序的简短提纲在后。成绩比例应标明课件文件名和页码；总评与分项内部权重分开写，换算结果标明为计算所得。缺少资料时标为待确认。日后新增章节可放在同一课程目录，并在 `astro.config.mjs` 的课程分组中接到提纲之后。
+
+`src/components/GradeBreakdown.astro` 用可读的比例条和文字列表显示成绩构成，数据在课程 MDX 中编辑；课件和个人实验提交文件不随笔记上传。样式借鉴 [Economics-notes](https://linliejmc.github.io/Economics-notes/) 的讲次索引与阅读留白，以本网站自己的蓝灰配色、铜色细节和双侧阅读导航呈现。
+
 - `notes/`：唯一需要日常编辑的 Markdown/MDX 内容源。
 - `scripts/sync-content.mjs`：校验 frontmatter 并同步到 Astro 内容目录。
 - `src/components/`：课程列表、笔记标题元信息等界面组件。

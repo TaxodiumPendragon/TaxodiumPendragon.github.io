@@ -22,6 +22,18 @@ export default defineConfig({
         { label: '首页', link: '/' },
         { label: '课程笔记', collapsed: true, items: [
           { label: '课程总览', link: '/courses/' },
+          { label: '操作系统（实验班）', collapsed: true, items: [
+            { label: '课程总览', link: '/courses/operating-systems-honors/' },
+            { label: '00 · 课程概览与复习提纲', link: '/courses/operating-systems-honors/00-review-outline/' },
+          ] },
+          { label: '集合论与图论', collapsed: true, items: [
+            { label: '课程总览', link: '/courses/set-and-graph-theory/' },
+            { label: '00 · 课程概览与复习提纲', link: '/courses/set-and-graph-theory/00-review-outline/' },
+          ] },
+          { label: '计算机组织与体系结构实习', collapsed: true, items: [
+            { label: '课程总览', link: '/courses/computer-architecture-lab/' },
+            { label: '00 · 课程概览与复习提纲', link: '/courses/computer-architecture-lab/00-review-outline/' },
+          ] },
           { label: '编译原理', collapsed: true, items: [{ autogenerate: { directory: 'courses/compilers' } }] },
           { label: '软件工程', collapsed: true, items: [{ autogenerate: { directory: 'courses/software-engineering' } }] },
           { label: '数据结构与算法', collapsed: true, items: [

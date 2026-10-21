@@ -1,0 +1,19 @@
+---
+interface Props {
+  items: { label: string; weight: number; detail: string }[];
+  caption: string;
+}
+const { items, caption } = Astro.props;
+---
+<figure class="assessment-panel">
+  <figcaption>{caption}</figcaption>
+  <div class="assessment-strip" aria-hidden="true">
+    {items.map((item, i) => <span style={`flex: ${item.weight}; --segment: ${i}`} />)}
+  </div>
+  <dl class="assessment-list">
+    {items.map((item) => <div>
+      <dt><span>{item.label}</span><strong>{item.weight}%</strong></dt>
+      <dd>{item.detail}</dd>
+    </div>)}
+  </dl>
+</figure>

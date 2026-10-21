@@ -3,6 +3,9 @@ import Default from '@astrojs/starlight/components/PageTitle.astro';
 const { entry } = Astro.locals.starlightRoute;
 const { course, venue, year, authors, tags, links, description } = entry.data;
 const names: Record<string, string> = {
+  'operating-systems-honors': '操作系统（实验班）',
+  'set-and-graph-theory': '集合论与图论',
+  'computer-architecture-lab': '计算机组织与体系结构实习',
   compilers: '编译原理', 'software-engineering': '软件工程',
   'data-structures-and-algorithms': '数据结构与算法',
   'computer-networks': '计算机网络', 'discrete-mathematics': '离散数学',
