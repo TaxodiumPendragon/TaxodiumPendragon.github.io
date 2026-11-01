@@ -9,6 +9,6 @@ next: false
 
 ## 从这里开始
 
-1. [00 · 课程概览与复习提纲](/courses/operating-systems-honors/00-review-outline/)：先看成绩构成，再按 Lect 1–10 回顾重点。
+1. [00 · 课程概览与复习提纲](/courses/operating-systems-honors/00-review-outline/)：先看成绩构成，再按 Lect 1–12 与三份实验课件回顾重点，最后用串讲案例和自检题连接各模块。
 
 本页对应 2026 秋课程。后续章节笔记与实验记录可接在提纲之后。
