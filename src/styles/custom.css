@@ -240,6 +240,21 @@ body {
   font-size: clamp(1.4rem, 2.2vw, 1.8rem);
 }
 .course-review h3 { font-size: 1.15rem; }
+.sl-markdown-content .compact-grading { display: table; width: 100%; font-size: .88rem; margin-block: 1rem .4rem; }
+.compact-grading caption { text-align: start; font-size: .78rem; color: var(--sl-color-gray-3); padding-bottom: .5rem; }
+.sl-markdown-content .compact-grading :is(th, td) { padding: .45rem .65rem; vertical-align: middle; }
+.compact-grading th[scope='rowgroup'] { background: transparent; font-weight: 500; }
+.compact-grading small { display: block; font-size: .78rem; color: var(--sl-color-gray-3); }
+.compact-grading :is(th, td):nth-last-child(-n+2) { font-variant-numeric: tabular-nums; }
+.compact-grading .grade-midterm { background: color-mix(in srgb, var(--tp-copper) 10%, var(--sl-color-bg)); }
+.compact-grading .grade-midterm .exam-label { color: var(--tp-copper); font-weight: 600; }
+.compact-grading .grade-final { background: color-mix(in srgb, var(--sl-color-accent) 10%, var(--sl-color-bg)); }
+.compact-grading .grade-final .exam-label { color: var(--sl-color-text-accent); font-weight: 600; }
+.compact-grading tfoot { font-weight: 600; }
+.course-review .grading-source { margin-top: .4rem; font-size: .78rem; color: var(--sl-color-gray-3); }
+@media (max-width: 40rem) {
+  .sl-markdown-content .compact-grading :is(th, td) { padding: .4rem .3rem; }
+}
 .assessment-panel {
   margin: 1.4rem 0;
   padding: 1.25rem;
